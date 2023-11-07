@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var networkManager = NetworkManager()
-    @State private var isShowingDetail = false
     
     var body: some View {
         NavigationStack{
