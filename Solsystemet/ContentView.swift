@@ -18,7 +18,12 @@ struct ContentView: View {
                 ScrollView(.horizontal) {
                     HStack {
                         ForEach(networkManager.planets, id: \.id) { planet in
-                            NavigationLink(destination: PlanetDetailView(planetName: planet.englishName, avgTemp: planet.avgTemp, discoveredBy: planet.discoveredBy, discoveredDate: planet.discoveryDate, moons: planet.moons)) {
+                            NavigationLink(destination: PlanetDetailView(
+                                planetName: planet.englishName,
+                                avgTemp: planet.avgTemp,
+                                discoveredBy: planet.discoveredBy,
+                                discoveredDate: planet.discoveryDate,
+                                moons: planet.moons)) {
                                 Image("\(planet.englishName)")
                                     .resizable()
                                     .frame(width: 300, height: 300)
