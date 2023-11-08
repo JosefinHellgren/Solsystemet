@@ -7,11 +7,14 @@
 
 import Foundation
 
-class NetworkManager : ObservableObject {
+@available(iOS 13.0, *)
+public class NetworkManager : ObservableObject {
     
-    @Published var planets : [CelestialBody] = []
+    @Published public var planets : [CelestialBody] = []
     
-    func getAllPlanets() async throws {
+    public init() {}
+    
+    public func getAllPlanets() async throws {
         
         do {
             guard let url = URL(string: "https://api.le-systeme-solaire.net/rest/bodies/") else { return }
@@ -31,26 +34,26 @@ class NetworkManager : ObservableObject {
 }
 
 
-struct SolarSystemData: Codable {
-    let bodies: [CelestialBody]
+public struct SolarSystemData: Codable {
+    public let bodies: [CelestialBody]
 }
 
-struct CelestialBody: Codable {
-    let id: String
-    let name: String
-    let englishName: String
-    let isPlanet: Bool
-    let moons: [Moon]?
-    let discoveredBy: String
-    let discoveryDate: String
-    let avgTemp: Int
-    let bodyType: String
-    let rel: String
+public struct CelestialBody: Codable {
+    public let id: String
+    public let name: String
+    public let englishName: String
+    public let isPlanet: Bool
+    public let moons: [Moon]?
+    public let discoveredBy: String
+    public let discoveryDate: String
+    public let avgTemp: Int
+    public let bodyType: String
+    public let rel: String
 }
 
-struct Moon: Codable {
-    let moon: String
-    let rel: String
+public struct Moon: Codable {
+    public let moon: String
+    public let rel: String
 }
 
 

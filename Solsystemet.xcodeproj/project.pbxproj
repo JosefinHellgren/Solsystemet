@@ -11,7 +11,8 @@
 		A9C185502AFA5B310017560E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C1854F2AFA5B310017560E /* ContentView.swift */; };
 		A9C185522AFA5B320017560E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9C185512AFA5B320017560E /* Assets.xcassets */; };
 		A9C185552AFA5B320017560E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9C185542AFA5B320017560E /* Preview Assets.xcassets */; };
-		A9C1855C2AFA5D440017560E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C1855B2AFA5D440017560E /* NetworkManager.swift */; };
+		A9C1855E2AFA7A490017560E /* PlanetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C1855D2AFA7A480017560E /* PlanetDetailView.swift */; };
+		A9C185652AFB77020017560E /* SolarSystem in Frameworks */ = {isa = PBXBuildFile; productRef = A9C185642AFB77020017560E /* SolarSystem */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,7 +21,10 @@
 		A9C1854F2AFA5B310017560E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A9C185512AFA5B320017560E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A9C185542AFA5B320017560E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		A9C1855B2AFA5D440017560E /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		A9C1855D2AFA7A480017560E /* PlanetDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetDetailView.swift; sourceTree = "<group>"; };
+		A9C185602AFA7EE10017560E /* SolarSystem */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SolarSystem; path = ../SolarSystem; sourceTree = "<group>"; };
+		A9C185612AFA7F0E0017560E /* SolarSystem */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SolarSystem; path = ../SolarSystem; sourceTree = "<group>"; };
+		A9C185622AFB75F30017560E /* SolarSystem */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SolarSystem; path = Solsystemet/SolarSystem; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9C185652AFB77020017560E /* SolarSystem in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,8 +42,11 @@
 		A9C185412AFA5B310017560E = {
 			isa = PBXGroup;
 			children = (
+				A9C185622AFB75F30017560E /* SolarSystem */,
+				A9C1855F2AFA7EE10017560E /* Packages */,
 				A9C1854C2AFA5B310017560E /* Solsystemet */,
 				A9C1854B2AFA5B310017560E /* Products */,
+				A9C185632AFB77020017560E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,8 +62,8 @@
 			isa = PBXGroup;
 			children = (
 				A9C1854D2AFA5B310017560E /* SolsystemetApp.swift */,
-				A9C1855B2AFA5D440017560E /* NetworkManager.swift */,
 				A9C1854F2AFA5B310017560E /* ContentView.swift */,
+				A9C1855D2AFA7A480017560E /* PlanetDetailView.swift */,
 				A9C185512AFA5B320017560E /* Assets.xcassets */,
 				A9C185532AFA5B320017560E /* Preview Content */,
 			);
@@ -68,6 +76,22 @@
 				A9C185542AFA5B320017560E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A9C1855F2AFA7EE10017560E /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				A9C185602AFA7EE10017560E /* SolarSystem */,
+				A9C185612AFA7F0E0017560E /* SolarSystem */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		A9C185632AFB77020017560E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,6 +110,9 @@
 			dependencies = (
 			);
 			name = Solsystemet;
+			packageProductDependencies = (
+				A9C185642AFB77020017560E /* SolarSystem */,
+			);
 			productName = Solsystemet;
 			productReference = A9C1854A2AFA5B310017560E /* Solsystemet.app */;
 			productType = "com.apple.product-type.application";
@@ -140,9 +167,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9C1855C2AFA5D440017560E /* NetworkManager.swift in Sources */,
 				A9C185502AFA5B310017560E /* ContentView.swift in Sources */,
 				A9C1854E2AFA5B310017560E /* SolsystemetApp.swift in Sources */,
+				A9C1855E2AFA7A490017560E /* PlanetDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +370,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A9C185642AFB77020017560E /* SolarSystem */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SolarSystem;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A9C185422AFA5B310017560E /* Project object */;
 }
