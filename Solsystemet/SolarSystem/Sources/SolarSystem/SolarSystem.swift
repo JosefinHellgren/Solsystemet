@@ -9,11 +9,15 @@ import Foundation
 
 @available(iOS 13.0, *)
 public class SolarSystem : ObservableObject {
-    
+    enum State {
+        case idle
+        case loading
+        case emptyState
+    }
     enum SolarSystemError: Error {
         case failedToGetAllPlanets
     }
-    
+    @Published private(set) var state: State = .idle
     @Published public var planets : [CelestialBody] = []
     
     public init() {}
