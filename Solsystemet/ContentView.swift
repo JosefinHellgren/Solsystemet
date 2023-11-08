@@ -36,9 +36,8 @@ struct ContentView: View {
                     Task {
                         do { try await
                             solarSystem.getAllPlanets()
-                            print("did something")
                         } catch {
-                            print("error\(error)")
+                            print("from contentView \(error)")
                         }
                     }
                 }
