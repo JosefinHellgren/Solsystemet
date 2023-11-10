@@ -7,7 +7,10 @@
 
 import Foundation
 
-public struct Moon: Codable {
-    public let moon: String
-    public let rel: String
+public struct Moon: CelestialBody, Codable {
+    public var id: String
+    public var name: String
+    public var discoveredBy: String
+    public var discoveredDate: String
+    public var avgTemp: Int
 }

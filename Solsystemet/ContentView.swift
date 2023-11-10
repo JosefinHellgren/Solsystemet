@@ -10,24 +10,21 @@ import SolarSystem
 
 struct ContentView: View {
     @ObservedObject var solarSystem = SolarSystem()
-    
     var body: some View {
-        NavigationStack{
+        NavigationStack {
             ZStack {
                 Color.black.ignoresSafeArea()
                 ScrollView(.horizontal) {
-                   planetsHorisontalView
-                    
+                    planetsHorisontalView
                 }.onAppear {
-                    Task {
+                    Task { if solarSystem.planets.isEmpty {
                         do { try await
-                            solarSystem.getAllPlanets()
+                            solarSystem.updatePlanets()
                         } catch {
                             print("from contentView \(error)")
                         }
-                    }
+                    }}
                 }
-                
             }
         }
     }
@@ -35,12 +32,11 @@ struct ContentView: View {
         HStack {
             ForEach(solarSystem.planets, id: \.id) { planet in
                 NavigationLink(destination: PlanetDetailView(
-                    planetName: planet.englishName,
+                    planetName: planet.name,
                     avgTemp: planet.avgTemp,
-                    discoveredBy: planet.discoveredBy,
-                    discoveredDate: planet.discoveryDate,
+                    discoveredBy: planet.discoveredBy, discoveredDate: planet.discoveredDate,
                     moons: planet.moons)) {
-                        Image("\(planet.englishName)")
+                        Image("\(planet.name)")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 300, height: 300)

@@ -15,7 +15,6 @@ struct PlanetDetailView: View {
     let discoveredBy: String
     let discoveredDate: String
     let moons: [Moon]?
-    
     var body: some View {
         ZStack {
             Color.black.ignoresSafeArea()
@@ -31,21 +30,30 @@ struct PlanetDetailView: View {
                 Text("Moons:")
                     .font(.headline)
                 ScrollView(.horizontal) {
-                    HStack {
-                        if let moons{
-                            ForEach(moons,id: \.rel) { moon in
-                                Text(moon.moon)
+                    HStack { if let moons {
+                        ForEach(moons, id: \.id) { moon in
+                            NavigationLink(destination: {
+                                Text("Name: \(moon.name)")
+                                Text("Discovered by: \(moon.discoveredBy)")
+                            }, label: {
+                                Text(moon.name)
                             }
-                        }
+                        )}
+                    }
                     }
                 }
             } .foregroundColor(Color.white)
         }
     }
 }
-
 struct PlanetDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        PlanetDetailView(planetName: "Mercury", avgTemp: 170, discoveredBy: "Josefin Hellgren", discoveredDate: "Monday", moons: nil)
+        PlanetDetailView(
+            planetName: "Mercury",
+            avgTemp: 170,
+            discoveredBy: "Josefin Hellgren",
+            discoveredDate: "Monday",
+            moons: nil
+        )
     }
 }

@@ -25,6 +25,7 @@
 		A9C185602AFA7EE10017560E /* SolarSystem */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SolarSystem; path = ../SolarSystem; sourceTree = "<group>"; };
 		A9C185612AFA7F0E0017560E /* SolarSystem */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SolarSystem; path = ../SolarSystem; sourceTree = "<group>"; };
 		A9C185622AFB75F30017560E /* SolarSystem */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SolarSystem; path = Solsystemet/SolarSystem; sourceTree = "<group>"; };
+		A9C185672AFCF5BE0017560E /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +43,7 @@
 		A9C185412AFA5B310017560E = {
 			isa = PBXGroup;
 			children = (
+				A9C185672AFCF5BE0017560E /* .swiftlint.yml */,
 				A9C185622AFB75F30017560E /* SolarSystem */,
 				A9C1855F2AFA7EE10017560E /* Packages */,
 				A9C1854C2AFA5B310017560E /* Solsystemet */,
@@ -104,6 +106,7 @@
 				A9C185462AFA5B310017560E /* Sources */,
 				A9C185472AFA5B310017560E /* Frameworks */,
 				A9C185482AFA5B310017560E /* Resources */,
+				A9C185662AFCF4F20017560E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -161,6 +164,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A9C185662AFCF4F20017560E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "SWIFTLINT_PATH=\"/Users/josefinhellgren/.mint/bin/swiftlint\"\n\nif [ -x \"$SWIFTLINT_PATH\" ]; then\n    \"$SWIFTLINT_PATH\"\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A9C185462AFA5B310017560E /* Sources */ = {
