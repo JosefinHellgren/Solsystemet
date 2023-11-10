@@ -33,8 +33,13 @@ struct PlanetDetailView: View {
                     HStack { if let moons {
                         ForEach(moons, id: \.id) { moon in
                             NavigationLink(destination: {
-                                Text("Name: \(moon.name)")
-                                Text("Discovered by: \(moon.discoveredBy)")
+                                ZStack {
+                                    Color.black.ignoresSafeArea()
+                                    VStack {
+                                        Text("Name: \(moon.name)")
+                                        Text("Discovered by: \(moon.discoveredBy)")
+                                    }.foregroundColor(Color.white)
+                                }
                             }, label: {
                                 Text(moon.name)
                             }
