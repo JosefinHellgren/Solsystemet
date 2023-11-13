@@ -9,5 +9,4 @@ import Foundation
 
 public struct InternalMoon: Codable {
     public let moon: String
-    public let rel: String
 }

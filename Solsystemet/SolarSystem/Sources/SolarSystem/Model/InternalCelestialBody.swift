@@ -17,5 +17,4 @@ public struct InternalCelestialBody: Codable {
     public let discoveryDate: String
     public let avgTemp: Int
     public let bodyType: String
-    public let rel: String
 }
