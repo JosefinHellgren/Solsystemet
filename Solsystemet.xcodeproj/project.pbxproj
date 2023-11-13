@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A9B376FF2B02725200770705 /* MoonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B376FE2B02725200770705 /* MoonDetailView.swift */; };
 		A9C1854E2AFA5B310017560E /* SolsystemetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C1854D2AFA5B310017560E /* SolsystemetApp.swift */; };
 		A9C185502AFA5B310017560E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C1854F2AFA5B310017560E /* ContentView.swift */; };
 		A9C185522AFA5B320017560E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9C185512AFA5B320017560E /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A9B376FE2B02725200770705 /* MoonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonDetailView.swift; sourceTree = "<group>"; };
 		A9C1854A2AFA5B310017560E /* Solsystemet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Solsystemet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9C1854D2AFA5B310017560E /* SolsystemetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolsystemetApp.swift; sourceTree = "<group>"; };
 		A9C1854F2AFA5B310017560E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				A9C1855D2AFA7A480017560E /* PlanetDetailView.swift */,
 				A9C185512AFA5B320017560E /* Assets.xcassets */,
 				A9C185532AFA5B320017560E /* Preview Content */,
+				A9B376FE2B02725200770705 /* MoonDetailView.swift */,
 			);
 			path = Solsystemet;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 			files = (
 				A9C185502AFA5B310017560E /* ContentView.swift in Sources */,
 				A9C1854E2AFA5B310017560E /* SolsystemetApp.swift in Sources */,
+				A9B376FF2B02725200770705 /* MoonDetailView.swift in Sources */,
 				A9C1855E2AFA7A490017560E /* PlanetDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

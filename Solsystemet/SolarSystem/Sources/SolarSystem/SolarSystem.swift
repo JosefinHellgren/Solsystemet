@@ -8,6 +8,7 @@
 import Foundation
 
 public class SolarSystem: ObservableObject {
+    
     enum SolarSystemError: Error {
         case failedToGetAllPlanets
     }

@@ -10,6 +10,7 @@ import SolarSystem
 
 struct ContentView: View {
     @ObservedObject var solarSystem = SolarSystem()
+    @State private var nameIsVisible = false
     var body: some View {
         NavigationStack {
             ZStack {

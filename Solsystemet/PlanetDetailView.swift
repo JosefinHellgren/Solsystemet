@@ -10,6 +10,8 @@ import SwiftUI
 import SolarSystem
 
 struct PlanetDetailView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     let planetName: String
     let avgTemp: Int
     let discoveredBy: String
@@ -22,7 +24,7 @@ struct PlanetDetailView: View {
                 Image("\(planetName)")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 100, height: 100)
+                    .frame(width: 400, height: 400)
                 Text("\(planetName)")
                     .font(.largeTitle)
                 Text("Average Temperature: \(avgTemp)")
@@ -33,20 +35,31 @@ struct PlanetDetailView: View {
                     HStack { if let moons {
                         ForEach(moons, id: \.id) { moon in
                             NavigationLink(destination: {
-                                ZStack {
-                                    Color.black.ignoresSafeArea()
-                                    VStack {
-                                        Text("Name: \(moon.name)")
-                                        Text("Discovered by: \(moon.discoveredBy)")
-                                    }.foregroundColor(Color.white)
-                                }
+                                MoonDetailView(moonName: moon.name, discoveredBy: moon.discoveredBy)
+                              
                             }, label: {
-                                Text(moon.name)
+                                VStack {
+                                    Image(systemName: "circle.fill")
+                                    Text(moon.name)
+                                }
                             }
                         )}
                     }
-                    }
-                }
+                    }.padding()
+                }.navigationBarBackButtonHidden(true)
+                    .navigationBarItems(leading:
+                        Button(action: {
+                            // Handle custom back button action
+                            self.presentationMode.wrappedValue.dismiss()
+                        }) {
+                        HStack {
+                                Image(systemName: "arrow.left")
+                                    .foregroundColor(Color.white)
+                                    .imageScale(.large)
+                            }
+                        }
+                    )
+
             } .foregroundColor(Color.white)
         }
     }
