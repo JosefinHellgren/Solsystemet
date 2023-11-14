@@ -17,6 +17,7 @@ struct PlanetDetailView: View {
     let discoveredBy: String
     let discoveredDate: String
     let moons: [Moon]?
+    
     var body: some View {
         ZStack {
             Color.black.ignoresSafeArea()
@@ -27,8 +28,8 @@ struct PlanetDetailView: View {
                     .frame(width: 400, height: 400)
                 Text("\(planetName)")
                     .font(.largeTitle)
-                Text("Average Temperature: \(avgTemp)")
-                Text("Discovered by: \(discoveredBy), \(discoveredDate)")
+                Text("Average Temperature: \(avgTemp)℃")
+                discoveredBy.isEmpty ? nil : Text("Discovered by: \(discoveredBy), \(discoveredDate)")
                 Text("Moons:")
                     .font(.headline)
                 ScrollView(.horizontal) {
