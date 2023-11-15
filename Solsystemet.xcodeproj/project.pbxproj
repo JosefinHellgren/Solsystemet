@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		A9B376FF2B02725200770705 /* MoonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B376FE2B02725200770705 /* MoonDetailView.swift */; };
+		A9B377082B04CFB700770705 /* SpecificRoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B377072B04CFB700770705 /* SpecificRoundedCorners.swift */; };
+		A9B3770A2B04D28900770705 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B377092B04D28900770705 /* BackButton.swift */; };
+		A9B3770C2B04D5C800770705 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B3770B2B04D5C800770705 /* Constants.swift */; };
 		A9C1854E2AFA5B310017560E /* SolsystemetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C1854D2AFA5B310017560E /* SolsystemetApp.swift */; };
 		A9C185502AFA5B310017560E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C1854F2AFA5B310017560E /* ContentView.swift */; };
 		A9C185522AFA5B320017560E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9C185512AFA5B320017560E /* Assets.xcassets */; };
@@ -18,6 +21,9 @@
 
 /* Begin PBXFileReference section */
 		A9B376FE2B02725200770705 /* MoonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonDetailView.swift; sourceTree = "<group>"; };
+		A9B377072B04CFB700770705 /* SpecificRoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificRoundedCorners.swift; sourceTree = "<group>"; };
+		A9B377092B04D28900770705 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
+		A9B3770B2B04D5C800770705 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A9C1854A2AFA5B310017560E /* Solsystemet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Solsystemet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9C1854D2AFA5B310017560E /* SolsystemetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolsystemetApp.swift; sourceTree = "<group>"; };
 		A9C1854F2AFA5B310017560E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -42,6 +48,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A9B377062B04CF8800770705 /* utility */ = {
+			isa = PBXGroup;
+			children = (
+				A9B377072B04CFB700770705 /* SpecificRoundedCorners.swift */,
+				A9B3770B2B04D5C800770705 /* Constants.swift */,
+			);
+			path = utility;
+			sourceTree = "<group>";
+		};
 		A9C185412AFA5B310017560E = {
 			isa = PBXGroup;
 			children = (
@@ -65,12 +80,14 @@
 		A9C1854C2AFA5B310017560E /* Solsystemet */ = {
 			isa = PBXGroup;
 			children = (
+				A9B377062B04CF8800770705 /* utility */,
 				A9C1854D2AFA5B310017560E /* SolsystemetApp.swift */,
 				A9C1854F2AFA5B310017560E /* ContentView.swift */,
 				A9C1855D2AFA7A480017560E /* PlanetDetailView.swift */,
+				A9B376FE2B02725200770705 /* MoonDetailView.swift */,
+				A9B377092B04D28900770705 /* BackButton.swift */,
 				A9C185512AFA5B320017560E /* Assets.xcassets */,
 				A9C185532AFA5B320017560E /* Preview Content */,
-				A9B376FE2B02725200770705 /* MoonDetailView.swift */,
 			);
 			path = Solsystemet;
 			sourceTree = "<group>";
@@ -196,7 +213,10 @@
 			files = (
 				A9C185502AFA5B310017560E /* ContentView.swift in Sources */,
 				A9C1854E2AFA5B310017560E /* SolsystemetApp.swift in Sources */,
+				A9B3770A2B04D28900770705 /* BackButton.swift in Sources */,
 				A9B376FF2B02725200770705 /* MoonDetailView.swift in Sources */,
+				A9B3770C2B04D5C800770705 /* Constants.swift in Sources */,
+				A9B377082B04CFB700770705 /* SpecificRoundedCorners.swift in Sources */,
 				A9C1855E2AFA7A490017560E /* PlanetDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
