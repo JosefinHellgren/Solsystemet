@@ -33,6 +33,11 @@ struct PlanetDetailView: View {
             .resizable()
             .aspectRatio(contentMode: .fill)
             .edgesIgnoringSafeArea(.all)
+            .overlay( LinearGradient(
+                gradient: Gradient(colors: [AppColors.green.opacity(0.3), Color.clear]),
+                           startPoint: .top,
+                           endPoint: .bottom
+                       ))
     }
     @ViewBuilder var planetImage: some View {
         Image("\(planetName)")
@@ -48,8 +53,13 @@ struct PlanetDetailView: View {
                     .font(.title)
                     .foregroundColor(AppColors.green)
                     .padding(.vertical)
-                Text("This is the planet info,it gores on on on")
-                Text("This is the planet info")
+                Text("""
+Earth is the third planet from the Sun and the only astronomical object known to harbor life.
+ This is enabled by Earth being a water world, the only one in the Solar System sustaining liquid surface water.
+ Almost all of Earth's water is contained in its global ocean, covering 70.8% of Earth's crust.
+ The remaining 29.2% of Earth's crust is land, most of which is located in the form of continental landmasses within one hemisphere, Earth's land hemisphere.
+""")
+                
             }.padding(.horizontal)
             horizontalMoons
         }
