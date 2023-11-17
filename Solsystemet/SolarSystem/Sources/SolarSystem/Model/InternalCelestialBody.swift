@@ -17,4 +17,6 @@ public struct InternalCelestialBody: Codable {
     public let discoveryDate: String
     public let avgTemp: Int
     public let bodyType: String
+    public let mass: Mass?
+    public let semimajorAxis: Double
 }

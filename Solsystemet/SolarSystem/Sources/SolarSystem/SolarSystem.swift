@@ -15,6 +15,7 @@ public class SolarSystem: ObservableObject {
     @Published public var planets: [Planet] = []
     public init() {}
     public func updatePlanets() async throws {
+        let internalPlanets: [Planet] = []
         do {
             guard let url = URL(string: "https://api.le-systeme-solaire.net/rest/bodies/") else { return }
             let (data, _) = try await URLSession.shared.data(from: url)
@@ -22,7 +23,8 @@ public class SolarSystem: ObservableObject {
             let solarSystemData = try JSONDecoder().decode(SolarSystemData.self, from: data)
             
             let celesticalDictionary = Dictionary(uniqueKeysWithValues: solarSystemData.bodies.map { ($0.name, $0) })
-            let filteredPlanets = solarSystemData.bodies.filter { $0.isPlanet == true }
+            let filteredPlanets = solarSystemData.bodies.filter { $0.isPlanet == true || $0.englishName.lowercased() == "sun" || $0.englishName.lowercased() == "pluto" }
+            print(filteredPlanets.count)
             
             for planet in filteredPlanets {
                 var newMoons: [Moon] = []
@@ -45,7 +47,7 @@ public class SolarSystem: ObservableObject {
                     id: planet.id,
                     discoveredBy: planet.discoveredBy,
                     avgTemp: Int(convertTemperature(temp: planet.avgTemp)),
-                    moons: newMoons
+                    moons: newMoons, mass: planet.mass, semimajorAxis: planet.semimajorAxis
                 )
                 await MainActor.run {
                     self.planets.append(newPlanet)
@@ -56,6 +58,7 @@ public class SolarSystem: ObservableObject {
             throw SolarSystemError.failedToGetAllPlanets
         }
     }
+
     public func convertTemperature(temp: Int) -> Float {
         Float(temp) - 273.15
     }

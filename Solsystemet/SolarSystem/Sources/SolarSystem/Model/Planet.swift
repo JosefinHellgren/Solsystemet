@@ -14,4 +14,7 @@ public struct Planet: CelestialBody {
     public let discoveredBy: String
     public let avgTemp: Int
     public let moons: [Moon]?
+    public let mass: Mass?
+    public let semimajorAxis: Double
+    
 }

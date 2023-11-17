@@ -31,7 +31,7 @@ struct ContentView: View {
     }
     @ViewBuilder var planetsHorisontalView: some View {
         HStack {
-            ForEach(solarSystem.planets, id: \.id) { planet in
+            ForEach(solarSystem.planets.sorted(by: { $0.semimajorAxis < $1.semimajorAxis }), id: \.id) { planet in
                 NavigationLink(destination: PlanetDetailView(
                     planetName: planet.name,
                     avgTemp: planet.avgTemp,
@@ -46,7 +46,6 @@ struct ContentView: View {
         }
     }
 }
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()

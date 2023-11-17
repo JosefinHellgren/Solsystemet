@@ -18,7 +18,7 @@ struct PlanetDetailView: View {
     let moons: [Moon]?
     var body: some View {
         ZStack {
-           backgroundImage
+            backgroundImage
             ScrollView {
                 VStack {
                     planetImage
@@ -35,9 +35,9 @@ struct PlanetDetailView: View {
             .edgesIgnoringSafeArea(.all)
             .overlay( LinearGradient(
                 gradient: Gradient(colors: [AppColors.green.opacity(0.3), Color.clear]),
-                           startPoint: .top,
-                           endPoint: .bottom
-                       ))
+                startPoint: .top,
+                endPoint: .bottom
+            ))
     }
     @ViewBuilder var planetImage: some View {
         Image("\(planetName)")
@@ -59,7 +59,6 @@ Earth is the third planet from the Sun and the only astronomical object known to
  Almost all of Earth's water is contained in its global ocean, covering 70.8% of Earth's crust.
  The remaining 29.2% of Earth's crust is land, most of which is located in the form of continental landmasses within one hemisphere, Earth's land hemisphere.
 """)
-                
             }.padding(.horizontal)
             horizontalMoons
         }
@@ -86,7 +85,6 @@ Earth is the third planet from the Sun and the only astronomical object known to
             }
             }.padding()
         }
-        
     }
 }
 struct PlanetDetailView_Previews: PreviewProvider {
