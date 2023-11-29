@@ -10,14 +10,18 @@ import SolarSystem
 
 struct ContentView: View {
     @ObservedObject var solarSystem = SolarSystem()
-    @State private var nameIsVisible = false
+    @State var searchText = ""
+    @State var numberOfColumns = 2
     var body: some View {
-        NavigationStack {
+        NavigationView {
             ZStack {
                 Color.black.ignoresSafeArea()
-                ScrollView(.horizontal) {
-                    planetsHorisontalView
-                }.onAppear {
+                ScrollView(.vertical) {
+                    planetsGridView
+                }
+                .scrollIndicators(.hidden)
+                .padding()
+                .onAppear {
                     Task { if solarSystem.planets.isEmpty {
                         do { try await
                             solarSystem.updatePlanets()
@@ -26,28 +30,63 @@ struct ContentView: View {
                         }
                     }}
                 }
-            }
-        }
-    }
-    @ViewBuilder var planetsHorisontalView: some View {
-        HStack {
-            ForEach(solarSystem.planets.sorted(by: { $0.semimajorAxis < $1.semimajorAxis }), id: \.id) { planet in
-                NavigationLink(destination: PlanetDetailView(
-                    planetName: planet.name,
-                    avgTemp: planet.avgTemp,
-                    discoveredBy: planet.discoveredBy, discoveredDate: planet.discoveredDate,
-                    moons: planet.moons)) {
-                        Image("\(planet.name)")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 300, height: 300)
+                                .navigationTitle("Solar System")
+                .navigationBarItems(trailing:
+                                        Button(action: {
+                    withAnimation {
+                        toggleColumns()
                     }
+                }, label: {
+                    Image(systemName: numberOfColumns == 1 ? "square.grid.2x2" : "rectangle.grid.1x2")
+                        .foregroundColor(.white)
+                }))
             }
-        }
+        } .environment(\.colorScheme, .dark)
     }
-}
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+    private func toggleColumns() {
+        numberOfColumns = numberOfColumns == 1 ? 2 : 1
     }
-}
+    @ViewBuilder var planetsGridView: some View {
+        LazyVGrid(columns: Array(repeating: .init(.flexible()), count: numberOfColumns), spacing: 20) {
+            ForEach(solarSystem.filteredPlanets, id: \.id) { planet in
+                NavigationLink(
+                    destination: PlanetDetailView(planetName: planet.name, avgTemp: planet.avgTemp, discoveredBy: planet.discoveredBy, discoveredDate: planet.discoveredDate, moons: planet.moons)
+                ) {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 20).fill(Color.white).frame(maxWidth: .infinity)
+                        VStack {
+                            HStack {
+                                Image("\(planet.name)")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 150, height: 150)
+                                    .offset(x: -30, y: -30)
+                                    .mask(RoundedRectangle(cornerRadius: 20))
+                                    .clipped()
+                                    .allowsHitTesting(false)
+                                    .shadow(color: Color.black.opacity(0.5), radius: 10, x: 2, y: 2)
+                                Spacer()
+                            }
+                            HStack {
+                                Spacer()
+                                Text(planet.name)
+                                    .foregroundColor(Color.black)
+                                    .font(.title)
+                                    .padding()
+                            }
+                        }
+                    }
+                }
+                               }
+                               }
+                    .searchable(text: $searchText)
+                    .onChange(of: searchText) { newValue in
+                        solarSystem.searchPlanetsByname(query: newValue)
+                    }
+                               }
+                               }
+                               struct ContentView_Previews: PreviewProvider {
+                    static var previews: some View {
+                        ContentView()
+                    }
+                }

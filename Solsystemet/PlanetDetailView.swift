@@ -60,6 +60,7 @@ Earth is the third planet from the Sun and the only astronomical object known to
  The remaining 29.2% of Earth's crust is land, most of which is located in the form of continental landmasses within one hemisphere, Earth's land hemisphere.
 """)
             }.padding(.horizontal)
+                .foregroundColor(Color.black)
             horizontalMoons
         }
         .frame(width: UIScreen.main.bounds.width)

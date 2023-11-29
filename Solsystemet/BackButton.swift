@@ -14,9 +14,9 @@ struct BackButton: View {
     var body: some View {
         Button(action: {
             $presentationMode.wrappedValue.dismiss()
-        }) {
+        }, label: {
             Image(systemName: "arrow.left")
                 .foregroundColor(Color.white)
-        }
+        })
     }
 }

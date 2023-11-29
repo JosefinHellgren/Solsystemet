@@ -8,25 +8,24 @@
 import Foundation
 
 public class SolarSystem: ObservableObject {
-    
     enum SolarSystemError: Error {
         case failedToGetAllPlanets
     }
+    @Published public var filteredPlanets: [Planet] = []
     @Published public var planets: [Planet] = []
     public init() {}
     public func updatePlanets() async throws {
-        let internalPlanets: [Planet] = []
+//        let _: [Planet] = []
         do {
             guard let url = URL(string: "https://api.le-systeme-solaire.net/rest/bodies/") else { return }
             let (data, _) = try await URLSession.shared.data(from: url)
             print(data)
             let solarSystemData = try JSONDecoder().decode(SolarSystemData.self, from: data)
-            
             let celesticalDictionary = Dictionary(uniqueKeysWithValues: solarSystemData.bodies.map { ($0.name, $0) })
-            let filteredPlanets = solarSystemData.bodies.filter { $0.isPlanet == true || $0.englishName.lowercased() == "sun" || $0.englishName.lowercased() == "pluto" }
-            print(filteredPlanets.count)
-            
-            for planet in filteredPlanets {
+            let filteredPlanets = solarSystemData.bodies.filter {
+                $0.isPlanet == true || $0.englishName.lowercased() == "sun" || $0.englishName.lowercased() == "pluto"
+            }
+           for planet in filteredPlanets {
                 var newMoons: [Moon] = []
                 if let moons = planet.moons {
                     for moon in moons {
@@ -51,6 +50,7 @@ public class SolarSystem: ObservableObject {
                 )
                 await MainActor.run {
                     self.planets.append(newPlanet)
+                    self.filteredPlanets = planets
                 }
             }
         } catch {
@@ -61,5 +61,14 @@ public class SolarSystem: ObservableObject {
 
     public func convertTemperature(temp: Int) -> Float {
         Float(temp) - 273.15
+    }
+    public func searchPlanetsByname(query: String) {
+        if query.isEmpty {
+            filteredPlanets = planets
+        } else {
+            filteredPlanets = planets.filter({
+                $0.name.lowercased().contains(query.lowercased())
+            })
+        }
     }
 }

@@ -16,5 +16,4 @@ public struct Planet: CelestialBody {
     public let moons: [Moon]?
     public let mass: Mass?
     public let semimajorAxis: Double
-    
 }
