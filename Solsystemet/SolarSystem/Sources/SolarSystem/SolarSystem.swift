@@ -14,51 +14,20 @@ public class SolarSystem: ObservableObject {
     @Published public var filteredPlanets: [Planet] = []
     @Published public var planets: [Planet] = []
     public init() {}
-    public func updatePlanets() async throws {
-//        let _: [Planet] = []
+    public func tryNewApi() async throws {
         do {
-            guard let url = URL(string: "https://api.le-systeme-solaire.net/rest/bodies/") else { return }
+            guard let url = URL(string: "http://localhost:3000/api/data") else { return }
             let (data, _) = try await URLSession.shared.data(from: url)
-            print(data)
-            let solarSystemData = try JSONDecoder().decode(SolarSystemData.self, from: data)
-            let celesticalDictionary = Dictionary(uniqueKeysWithValues: solarSystemData.bodies.map { ($0.name, $0) })
-            let filteredPlanets = solarSystemData.bodies.filter {
-                $0.isPlanet == true || $0.englishName.lowercased() == "sun" || $0.englishName.lowercased() == "pluto"
-            }
-           for planet in filteredPlanets {
-                var newMoons: [Moon] = []
-                if let moons = planet.moons {
-                    for moon in moons {
-                        if let moonBody = celesticalDictionary[moon.moon] {
-                            let newMoon = Moon(
-                                id: moonBody.id,
-                                name: moonBody.englishName,
-                                discoveredBy: moonBody.discoveredBy,
-                                discoveredDate: moonBody.discoveryDate,
-                                avgTemp: moonBody.avgTemp)
-                            newMoons.append(newMoon)
-                        }
-                    }
-                }
-                let newPlanet = Planet(
-                    name: planet.englishName,
-                    discoveredDate: planet.discoveryDate,
-                    id: planet.id,
-                    discoveredBy: planet.discoveredBy,
-                    avgTemp: Int(convertTemperature(temp: planet.avgTemp)),
-                    moons: newMoons, mass: planet.mass, semimajorAxis: planet.semimajorAxis
-                )
-                await MainActor.run {
-                    self.planets.append(newPlanet)
-                    self.filteredPlanets = planets
-                }
+            print("my planets\(data)")
+            let solarSystem = try JSONDecoder().decode([Planet].self, from: data)
+            await MainActor.run {
+                self.planets = solarSystem
+                self.filteredPlanets = planets
             }
         } catch {
-            print(error)
             throw SolarSystemError.failedToGetAllPlanets
         }
     }
-
     public func convertTemperature(temp: Int) -> Float {
         Float(temp) - 273.15
     }
@@ -67,7 +36,7 @@ public class SolarSystem: ObservableObject {
             filteredPlanets = planets
         } else {
             filteredPlanets = planets.filter({
-                $0.name.lowercased().contains(query.lowercased())
+                $0.planet.lowercased().contains(query.lowercased())
             })
         }
     }

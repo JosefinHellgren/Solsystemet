@@ -30,8 +30,6 @@
 		A9C185512AFA5B320017560E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A9C185542AFA5B320017560E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A9C1855D2AFA7A480017560E /* PlanetDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetDetailView.swift; sourceTree = "<group>"; };
-		A9C185602AFA7EE10017560E /* SolarSystem */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SolarSystem; path = ../SolarSystem; sourceTree = "<group>"; };
-		A9C185612AFA7F0E0017560E /* SolarSystem */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SolarSystem; path = ../SolarSystem; sourceTree = "<group>"; };
 		A9C185622AFB75F30017560E /* SolarSystem */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SolarSystem; path = Solsystemet/SolarSystem; sourceTree = "<group>"; };
 		A9C185672AFCF5BE0017560E /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -62,7 +60,6 @@
 			children = (
 				A9C185672AFCF5BE0017560E /* .swiftlint.yml */,
 				A9C185622AFB75F30017560E /* SolarSystem */,
-				A9C1855F2AFA7EE10017560E /* Packages */,
 				A9C1854C2AFA5B310017560E /* Solsystemet */,
 				A9C1854B2AFA5B310017560E /* Products */,
 				A9C185632AFB77020017560E /* Frameworks */,
@@ -98,15 +95,6 @@
 				A9C185542AFA5B320017560E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		A9C1855F2AFA7EE10017560E /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				A9C185602AFA7EE10017560E /* SolarSystem */,
-				A9C185612AFA7F0E0017560E /* SolarSystem */,
-			);
-			name = Packages;
 			sourceTree = "<group>";
 		};
 		A9C185632AFB77020017560E /* Frameworks */ = {

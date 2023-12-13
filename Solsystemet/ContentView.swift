@@ -24,7 +24,7 @@ struct ContentView: View {
                 .onAppear {
                     Task { if solarSystem.planets.isEmpty {
                         do { try await
-                            solarSystem.updatePlanets()
+                            solarSystem.tryNewApi()
                         } catch {
                             print("from contentView \(error)")
                         }
@@ -48,15 +48,15 @@ struct ContentView: View {
     }
     @ViewBuilder var planetsGridView: some View {
         LazyVGrid(columns: Array(repeating: .init(.flexible()), count: numberOfColumns), spacing: 20) {
-            ForEach(solarSystem.filteredPlanets, id: \.id) { planet in
+            ForEach(solarSystem.filteredPlanets, id: \.id) { _planet in
                 NavigationLink(
-                    destination: PlanetDetailView(planetName: planet.name, avgTemp: planet.avgTemp, discoveredBy: planet.discoveredBy, discoveredDate: planet.discoveredDate, moons: planet.moons)
+                    destination: PlanetDetailView(planetName: _planet.planet, averageTemperature: _planet.avgTempCelsius, discoveredBy: _planet.discoveredBy, moons: _planet.moonNames, planetInfo: _planet.info)
                 ) {
                     ZStack {
                         RoundedRectangle(cornerRadius: 20).fill(Color.white).frame(maxWidth: .infinity)
                         VStack {
                             HStack {
-                                Image("\(planet.name)")
+                                Image("\(_planet.planet)")
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
                                     .frame(width: 150, height: 150)
@@ -69,7 +69,7 @@ struct ContentView: View {
                             }
                             HStack {
                                 Spacer()
-                                Text(planet.name)
+                                Text(_planet.planet)
                                     .foregroundColor(Color.black)
                                     .font(.title)
                                     .padding()

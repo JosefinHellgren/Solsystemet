@@ -1,19 +1,19 @@
 //
 //  File.swift
-//  
 //
-//  Created by josefin hellgren on 2023-11-10.
+//
+//  Created by josefin hellgren on 2023-12-13.
 //
 
 import Foundation
 
-public struct Planet: CelestialBody {
-    public var name: String
-    public var discoveredDate: String
-    public let id: String
+public struct Planet: Decodable {
+    public let id: UUID = UUID()
+    public let planet: String
+    public let avgTempCelsius: String
     public let discoveredBy: String
-    public let avgTemp: Int
-    public let moons: [Moon]?
-    public let mass: Mass?
-    public let semimajorAxis: Double
+    public let size: String
+    public let moons: Int
+    public let moonNames: [String]?
+    public let info: String
 }

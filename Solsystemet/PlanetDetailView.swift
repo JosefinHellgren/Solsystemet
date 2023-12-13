@@ -12,10 +12,10 @@ import SolarSystem
 struct PlanetDetailView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     let planetName: String
-    let avgTemp: Int
+    let averageTemperature: String
     let discoveredBy: String
-    let discoveredDate: String
-    let moons: [Moon]?
+    let moons: [String]?
+    let planetInfo: String
     var body: some View {
         ZStack {
             backgroundImage
@@ -53,12 +53,10 @@ struct PlanetDetailView: View {
                     .font(.title)
                     .foregroundColor(AppColors.green)
                     .padding(.vertical)
-                Text("""
-Earth is the third planet from the Sun and the only astronomical object known to harbor life.
- This is enabled by Earth being a water world, the only one in the Solar System sustaining liquid surface water.
- Almost all of Earth's water is contained in its global ocean, covering 70.8% of Earth's crust.
- The remaining 29.2% of Earth's crust is land, most of which is located in the form of continental landmasses within one hemisphere, Earth's land hemisphere.
-""")
+                Text(planetInfo)
+                    .padding(.vertical)
+                Text("The average temperature on \(planetName) is \(avgTemp).")
+                Text("Discovered by \(discoveredBy).")
             }.padding(.horizontal)
                 .foregroundColor(Color.black)
             horizontalMoons
@@ -72,13 +70,13 @@ Earth is the third planet from the Sun and the only astronomical object known to
             .font(.headline)
         ScrollView(.horizontal) {
             HStack { if let moons {
-                ForEach(moons, id: \.id) { moon in
+                ForEach(moons, id: \.self) { moon in
                     NavigationLink(destination: {
-                        MoonDetailView(moonName: moon.name, discoveredBy: moon.discoveredBy)
+                        MoonDetailView(moonName: moon)
                     }, label: {
                         VStack {
                             Image(systemName: "circle.fill")
-                            Text(moon.name)
+                            Text(moon)
                         }.foregroundColor(Color.black)
                     }
                     )
@@ -92,10 +90,10 @@ struct PlanetDetailView_Previews: PreviewProvider {
     static var previews: some View {
         PlanetDetailView(
             planetName: "Mercury",
-            avgTemp: 170,
+            avgTemp: "170",
             discoveredBy: "Josefin Hellgren",
-            discoveredDate: "Monday",
-            moons: nil
+            moons: nil,
+            planetInfo: "the eart is big"
         )
     }
 }
